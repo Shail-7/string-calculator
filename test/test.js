@@ -33,4 +33,8 @@ describe('String Calculator ', function () {
         expect(add("3,two")).to.equal("something went wrong while performing the Addition.");
     });
 
+    it('should return the addition of the n numbers when n numbers are passed.', function () {
+        expect(add("3,4,6,7")).to.equal(20);
+    });
+
 });
