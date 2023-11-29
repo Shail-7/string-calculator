@@ -37,4 +37,8 @@ describe('String Calculator ', function () {
         expect(add("3,4,6,7")).to.equal(20);
     });
 
+    it('should return the addition of the n numbers when numbers are seperated using a new line instead of comma.', function () {
+        expect(add("1\n2,3")).to.equal(6);
+    });
+
 });

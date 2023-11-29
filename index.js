@@ -4,7 +4,10 @@ const add = (numbers) => {
         if (numbers) {
             if (typeof numbers == 'string') {
 
-                const numArr = numbers.trim().split(',');
+                const numArr = numbers.trim().replace(/(\r\n|\n|\r)/gm, ",").split(',');
+                // console.log("arr")
+                // console.log(numArr)
+
                 const numLen = numArr.length;
 
                 if (numLen == 1) {
@@ -20,7 +23,7 @@ const add = (numbers) => {
                     if (sum)
                         return sum;
                     else
-                     return 'something went wrong while performing the Addition.'
+                        return 'something went wrong while performing the Addition.'
                 }
 
             } else {
@@ -38,7 +41,7 @@ const add = (numbers) => {
 }
 
 
-// console.info(add("1,2"))
+// console.info(add("1\n2,3"))
 
 
 module.exports = { add }    
