@@ -45,5 +45,12 @@ describe('String Calculator ', function () {
         expect(add("//;\n1;2")).to.equal(3);
     });
 
+    it('should return the message along with the numbers when negative numbers are passed.', function () {
+        expect(add("-1,-2,4")).to.equal("negatives not allowed -1,-2");
+    });
+
+    it('should return the message along with the number when negative number is passed.', function () {
+        expect(add("-1")).to.equal("negatives not allowed -1");
+    });
 
 });

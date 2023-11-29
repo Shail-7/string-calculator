@@ -18,20 +18,31 @@ const add = (numbers) => {
 
                 const numLen = numArr.length;
 
-                if (numLen == 1) {
-                    if (!isNaN(numArr[0]))
-                        return numArr[0];
-                    else
-                        return 'value is not a number.'
+                const negNums = numArr?.filter((num) => {
+                    if (!isNaN(num) && Math.sign(num) == -1)
+                        return num;
+                })
+
+                if (negNums?.length == 0) {
+
+                    if (numLen == 1) {
+                        if (!isNaN(numArr[0]))
+                            return numArr[0];
+                        else
+                            return 'value is not a number.'
+                    } else {
+                        const sum = numArr.reduce((sum, num) => {
+                            if (!isNaN(sum) && !isNaN(sum))
+                                return parseFloat(num) + parseFloat(sum);
+                        })
+                        if (sum)
+                            return sum;
+                        else
+                            return 'something went wrong while performing the Addition.'
+                    }
                 } else {
-                    const sum = numArr.reduce((sum, num) => {
-                        if (!isNaN(sum) && !isNaN(sum))
-                            return parseFloat(num) + parseFloat(sum);
-                    })
-                    if (sum)
-                        return sum;
-                    else
-                        return 'something went wrong while performing the Addition.'
+
+                    return `negatives not allowed ${negNums?.toString()}`
                 }
 
             } else {
@@ -48,8 +59,7 @@ const add = (numbers) => {
     }
 }
 
-
-console.info(add("//;\n1;2,4"))
+// console.info(add("-1,2,4"))
 
 
 module.exports = { add }    
