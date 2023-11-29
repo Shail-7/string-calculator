@@ -4,20 +4,28 @@ const add = (numbers) => {
         if (numbers) {
             if (typeof numbers == 'string') {
 
-                const numArr = numbers.trim().replace(/(\r\n|\n|\r)/gm, ",").split(',');
-                // console.log("arr")
-                // console.log(numArr)
+
+                let numArr;
+
+                // Check for other delimeter.
+                let otherDelimeter = (numbers.substring(0, 2) == '//' && numbers.indexOf('\n') == 3 ? numbers.charAt(2) : false);
+
+                if (otherDelimeter) {
+                    numbers = numbers.slice(4);
+                }
+
+                (otherDelimeter ? numArr = numbers.trim().replace(/(\r\n|\n|\r)/gm, ",").replace(otherDelimeter, ',').split(',') : numArr = numbers.trim().replace(/(\r\n|\n|\r)/gm, ",").split(','))
 
                 const numLen = numArr.length;
 
                 if (numLen == 1) {
-                    if (parseFloat(numArr[0]))
+                    if (!isNaN(numArr[0]))
                         return numArr[0];
                     else
                         return 'value is not a number.'
                 } else {
                     const sum = numArr.reduce((sum, num) => {
-                        if (parseFloat(num))
+                        if (!isNaN(sum) && !isNaN(sum))
                             return parseFloat(num) + parseFloat(sum);
                     })
                     if (sum)
@@ -41,7 +49,7 @@ const add = (numbers) => {
 }
 
 
-// console.info(add("1\n2,3"))
+console.info(add("//;\n1;2,4"))
 
 
 module.exports = { add }    

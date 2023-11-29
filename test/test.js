@@ -41,4 +41,9 @@ describe('String Calculator ', function () {
         expect(add("1\n2,3")).to.equal(6);
     });
 
+    it('should return the addition of the numbers when a different delimeter is passed.', function () {
+        expect(add("//;\n1;2")).to.equal(3);
+    });
+
+
 });
